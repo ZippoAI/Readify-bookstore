@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Readify</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(139, 90, 60, 0.15);
+            width: 100%;
+            max-width: 440px;
+            padding: 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #8b5a3c, #c4956d, #8b5a3c);
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .logo {
+            font-size: 36px;
+            color: #8b5a3c;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: #d4a574;
+            border-radius: 2px;
+        }
+
+        .logo-tagline {
+            color: #9d7e6b;
+            font-size: 14px;
+            margin-top: 16px;
+            font-weight: 400;
+        }
+
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .welcome-text h2 {
+            color: #3d2f26;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .welcome-text p {
+            color: #7a6554;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            color: #5c4a3d;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e8ddd0;
+            border-radius: 12px;
+            font-size: 15px;
+            color: #3d2f26;
+            background: #fafaf8;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #c4956d;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(196, 149, 109, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #b3a397;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #9d7e6b;
+            cursor: pointer;
+            padding: 4px;
+            font-size: 18px;
+            transition: color 0.2s ease;
+            user-select: none;
+        }
+
+        .password-toggle:hover {
+            color: #8b5a3c;
+        }
+
+        .error-message {
+            color: #c85a54;
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group.error input {
+            border-color: #c85a54;
+            background: #fff5f5;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -12px;
+            margin-bottom: 24px;
+        }
+
+        .forgot-password a {
+            color: #9d7e6b;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s ease;
+        }
+
+        .forgot-password a:hover {
+            color: #8b5a3c;
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #8b5a3c 0%, #a67253 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(139, 90, 60, 0.3);
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 90, 60, 0.4);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 28px 0;
+            color: #b3a397;
+            font-size: 13px;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background: #e8ddd0;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .signup-link {
+            text-align: center;
+            color: #7a6554;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #8b5a3c;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .signup-link a:hover {
+            color: #6d4530;
+        }
+
+        .book-decoration {
+            position: absolute;
+            opacity: 0.06;
+            font-size: 200px;
+            color: #8b5a3c;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .book-decoration.top-right {
+            top: -60px;
+            right: -60px;
+            transform: rotate(15deg);
+        }
+
+        .book-decoration.bottom-left {
+            bottom: -80px;
+            left: -80px;
+            transform: rotate(-15deg);
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 36px 28px;
+            }
+
+            .logo {
+                font-size: 32px;
+            }
+
+            .welcome-text h2 {
+                font-size: 22px;
+            }
+
+            .book-decoration {
+                font-size: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="book-decoration top-right">📚</div>
+        <div class="book-decoration bottom-left">📖</div>
+        
+        <div class="logo-section">
+            <div class="logo">Readify</div>
+            <p class="logo-tagline">Your cozy corner for books</p>
+        </div>
+
+        <div class="welcome-text">
+            <h2>Welcome Back</h2>
+            <p>Continue your reading journey</p>
+        </div>
+
+        <form id="loginForm"  method='POST'>
+            {% csrf_token %}
+            <div class="form-group" id="usernameGroup">
+                <label for="username">Username</label>
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                    >
+                </div>
+                <div class="error-message" id="usernameError"></div>
+            </div>
+
+            <div class="form-group" id="passwordGroup">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                    >
+                    <button type="button" class="password-toggle" id="togglePassword" aria-label="Toggle password visibility">
+                        👁️
+                    </button>
+                </div>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+
+            <div class="forgot-password">
+                <a href="#" onclick="event.preventDefault()">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="login-button">Log In</button>
+        </form>
+
+        <div class="divider">or</div>
+
+        <div class="signup-link">
+            Don't have an account? <a href="#" onclick="event.preventDefault()">Sign up</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const usernameGroup = document.getElementById('usernameGroup');
+        const passwordGroup = document.getElementById('passwordGroup');
+        const usernameError = document.getElementById('usernameError');
+        const passwordError = document.getElementById('passwordError');
+        const togglePassword = document.getElementById('togglePassword');
+
+        // Password visibility toggle
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            this.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+
+        // Clear error on input
+        usernameInput.addEventListener('input', function() {
+            clearError(usernameGroup, usernameError);
+        });
+
+        passwordInput.addEventListener('input', function() {
+            clearError(passwordGroup, passwordError);
+        });
+
+        // Form validation and submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+
+            // Validate username
+            if (usernameInput.value.trim() === '') {
+                showError(usernameGroup, usernameError, 'Please enter your username');
+                isValid = false;
+            }
+
+            // Validate password
+            if (passwordInput.value === '') {
+                showError(passwordGroup, passwordError, 'Please enter your password');
+                isValid = false;
+            } else if (passwordInput.value.length < 6) {
+                showError(passwordGroup, passwordError, 'Password must be at least 6 characters');
+                isValid = false;
+            }
+
+          
+                
+            }
+        });
+
+        function showError(group, errorElement, message) {
+            group.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.classList.add('show');
+        }
+
+        function clearError(group, errorElement) {
+            group.classList.remove('error');
+            errorElement.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
