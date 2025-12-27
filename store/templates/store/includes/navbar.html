@@ -1,0 +1,419 @@
+<style>
+
+
+    /* Scoped Variables & Reset */
+    .readify_nav_system_v2025_global_wrapper_layer {
+        --readify-primary: #1e40af; /* Deep Bookish Blue */
+        --readify-primary-dark: #1e3a8a;
+        --readify-primary-light: #dbeafe;
+        --readify-accent: #3b82f6;
+        --readify-bg: #ffffff;
+        --readify-text-main: #0f172a;
+        --readify-text-muted: #475569;
+        --readify-border: #e2e8f0;
+        --readify-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+        --readify-font: 'Inter', -apple-system, system-ui, sans-serif;
+        
+        width: 100%;
+        background-color: var(--readify-bg);
+        border-bottom: 1px solid var(--readify-border);
+        font-family: var(--readify-font);
+        box-sizing: border-box;
+        position: relative;
+        z-index: 9999;
+    }
+
+    .readify_nav_system_v2025_global_wrapper_layer * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .readify_nav_system_v2025_content_container_inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Left: Brand Identity */
+    .readify_nav_system_v2025_brand_identity_segment {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .readify_nav_system_v2025_brand_logo_graphic {
+        color: var(--readify-primary);
+        display: flex;
+        align-items: center;
+    }
+
+    .readify_nav_system_v2025_brand_text_typography {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--readify-text-main);
+    }
+
+
+
+
+
+
+
+    .readify_nav_system_v2025_brand_text_typography span {
+        color: var(--readify-primary);
+    }
+
+    /* Center: Bookstore Navigation */
+    .readify_nav_system_v2025_center_navigation_rail {
+        display: flex;
+        gap: 4px;
+    }
+
+    .readify_nav_system_v2025_nav_link_interactive_item {
+        background: transparent;
+        border: none;
+        padding: 10px 18px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--readify-text-muted);
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .readify_nav_system_v2025_nav_link_interactive_item:hover {
+        color: var(--readify-primary);
+        background-color: var(--readify-primary-light);
+    }
+
+    /* Right: User Cluster */
+    .readify_nav_system_v2025_right_action_cluster {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .readify_nav_system_v2025_auth_button_outline_variant {
+        background: transparent;
+        border: 2px solid var(--readify-border);
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--readify-text-main);
+        cursor: pointer;
+        transition: border-color 0.2s;
+    }
+
+    .readify_nav_system_v2025_auth_button_outline_variant:hover {
+        border-color: var(--readify-primary);
+    }
+
+    .readify_nav_system_v2025_auth_button_solid_primary_variant {
+        background: var(--readify-primary);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #ffffff;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .readify_nav_system_v2025_auth_button_solid_primary_variant:hover {
+        background-color: var(--readify-primary-dark);
+        transform: translateY(-1px);
+    }
+
+    /* Profile Component */
+    .readify_nav_system_v2025_profile_interaction_wrapper {
+        position: relative;
+    }
+
+    .readify_nav_system_v2025_profile_avatar_trigger_btn {
+        background: #f8fafc;
+        border: 1px solid var(--readify-border);
+        padding: 4px;
+        cursor: pointer;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+    }
+
+
+
+
+        .avatar-fallback {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #1e40af;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+
+
+     /* ------------------------------------------  */
+
+
+    a{
+      text-decoration: none;
+    }
+
+     /* ------------------------------------------  */
+
+    .readify_nav_system_v2025_profile_avatar_trigger_btn:hover,
+    .readify_nav_system_v2025_profile_avatar_trigger_btn.active-state {
+        border-color: var(--readify-primary);
+        box-shadow: 0 0 0 3px var(--readify-primary-light);
+    }
+
+    .readify_nav_system_v2025_avatar_image_element {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    /* Dropdown UI */
+    .readify_nav_system_v2025_dropdown_panel_floater {
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: 260px;
+        background: white;
+        border: 1px solid var(--readify-border);
+        border-radius: 16px;
+        box-shadow: var(--readify-shadow);
+        padding: 12px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .readify_nav_system_v2025_dropdown_panel_floater.is-visible-now {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .readify_nav_system_v2025_dropdown_header_info {
+        padding: 8px 12px 12px;
+    }
+
+    .readify_nav_system_v2025_user_name_display {
+        display: block;
+        font-weight: 700;
+        color: var(--readify-text-main);
+        font-size: 1rem;
+    }
+
+    .readify_nav_system_v2025_user_role_display {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--readify-primary);
+        font-weight: 600;
+        margin-top: 2px;
+    }
+
+    .readify_nav_system_v2025_dropdown_divider_horizontal {
+        height: 1px;
+        background-color: var(--readify-border);
+        margin: 8px 4px;
+    }
+
+    .readify_nav_system_v2025_dropdown_action_item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 12px;
+        text-align: left;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--readify-text-main);
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.2s;
+    }
+
+    .readify_nav_system_v2025_dropdown_action_item:hover {
+        background-color: #f1f5f9;
+        color: var(--readify-primary);
+    }
+
+    .readify_nav_system_v2025_text_danger:hover {
+        background-color: #fff1f2 !important;
+        color: #e11d48 !important;
+    }
+
+    @media (max-width: 950px) {
+        .readify_nav_system_v2025_center_navigation_rail {
+            display: none;
+        }
+    }
+</style>
+
+<div class="readify_nav_system_v2025_global_wrapper_layer">
+    <div class="readify_nav_system_v2025_content_container_inner">
+        
+        <div class="readify_nav_system_v2025_brand_identity_segment">
+            <div class="readify_nav_system_v2025_brand_logo_graphic">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+            </div>
+            <a href="{% url "home" %}"><span class="readify_nav_system_v2025_brand_text_typography">Readify<span>.</span></span></a>
+        </div>
+
+        <div class="readify_nav_system_v2025_center_navigation_rail">
+            <button class="readify_nav_system_v2025_nav_link_interactive_item">Best Sellers</button>
+            <button class="readify_nav_system_v2025_nav_link_interactive_item">New Releases</button>
+            <button class="readify_nav_system_v2025_nav_link_interactive_item">Genres</button>
+            <button class="readify_nav_system_v2025_nav_link_interactive_item">Audiobooks</button>
+            <button class="readify_nav_system_v2025_nav_link_interactive_item">Community</button>
+        </div>
+{% if not user.is_authenticated %}
+        <div class="readify_nav_system_v2025_right_action_cluster">
+            
+            <button class="readify_nav_system_v2025_auth_button_outline_variant">Login</button>
+            <button class="readify_nav_system_v2025_auth_button_solid_primary_variant">Join Club</button>
+            
+            {% else %}
+            <div class="readify_nav_system_v2025_profile_interaction_wrapper">
+                
+                <button class="readify_nav_system_v2025_profile_avatar_trigger_btn" id="readify_profile_trigger_primary">
+                  {% if profile.profile_image %}
+                  
+                  <img src="https://ui-avatars.com/api/?name=Jane+Reader&background=1e40af&color=fff" alt="User Avatar" class="readify_nav_system_v2025_avatar_image_element">
+                  
+                  
+                  {% else %}
+                  
+                  <div class="readify_nav_system_v2025_avatar_image_element avatar-fallback">
+  {{ request.user.username|slice:":2"|upper }}
+</div>
+                  
+                  {% endif %}
+
+                  
+                </button>
+
+                <div class="readify_nav_system_v2025_dropdown_panel_floater" id="readify_dropdown_target_primary">
+                    <div class="readify_nav_system_v2025_dropdown_header_info">
+                        <span class="readify_nav_system_v2025_user_name_display">{{request.user.username}}</span>
+                        <span class="readify_nav_system_v2025_user_role_display">Gold Member</span>
+                    </div>
+                    
+                    <div class="readify_nav_system_v2025_dropdown_divider_horizontal"></div>
+                    
+                    <button class="readify_nav_system_v2025_dropdown_action_item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        My Reading List
+                    </button>
+                    <button class="readify_nav_system_v2025_dropdown_action_item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        Order History
+                    </button>
+                    <button class="readify_nav_system_v2025_dropdown_action_item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Account Settings
+                    </button>
+                    <a href="{% url "" %}"><button class="readify_nav_system_v2025_dropdown_action_item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" 
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/> </svg>
+                                    Contribute Book
+                      </button></a>
+                   
+
+                   
+                    <div class="readify_nav_system_v2025_dropdown_divider_horizontal"></div>
+
+                    <button class="readify_nav_system_v2025_dropdown_action_item readify_nav_system_v2025_text_danger">
+                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        {% endif %}
+    </div>
+</div>
+
+<script>
+(function() {
+    const DOM_REFS = {
+        trigger: document.getElementById('readify_profile_trigger_primary'),
+        menu: document.getElementById('readify_dropdown_target_primary'),
+        activeClass: 'is-visible-now',
+        triggerClass: 'active-state'
+    };
+
+    const ReadifyNavigationManager = {
+        init() {
+            if (!DOM_REFS.trigger || !DOM_REFS.menu) return;
+            this.bindEvents();
+        },
+
+        bindEvents() {
+            DOM_REFS.trigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleMenu();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!DOM_REFS.menu.contains(e.target)) {
+                    this.closeMenu();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') this.closeMenu();
+            });
+        },
+
+        toggleMenu() {
+            const isOpen = DOM_REFS.menu.classList.contains(DOM_REFS.activeClass);
+            isOpen ? this.closeMenu() : this.openMenu();
+        },
+
+        openMenu() {
+            DOM_REFS.menu.classList.add(DOM_REFS.activeClass);
+            DOM_REFS.trigger.classList.add(DOM_REFS.triggerClass);
+        },
+
+        closeMenu() {
+            DOM_REFS.menu.classList.remove(DOM_REFS.activeClass);
+            DOM_REFS.trigger.classList.remove(DOM_REFS.triggerClass);
+        }
+    };
+
+    ReadifyNavigationManager.init();
+})();
+</script>
