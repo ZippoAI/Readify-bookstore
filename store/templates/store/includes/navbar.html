@@ -293,7 +293,8 @@
             <button class="readify_nav_system_v2025_nav_link_interactive_item">Genres</button>
             <button class="readify_nav_system_v2025_nav_link_interactive_item">Audiobooks</button>
             <button class="readify_nav_system_v2025_nav_link_interactive_item">Community</button>
-        </div>
+            <a href="{% url "all_books" %}"><button class="readify_nav_system_v2025_nav_link_interactive_item">Books</button>
+        </div></a>
 {% if not user.is_authenticated %}
         <div class="readify_nav_system_v2025_right_action_cluster">
             
@@ -304,9 +305,10 @@
             <div class="readify_nav_system_v2025_profile_interaction_wrapper">
                 
                 <button class="readify_nav_system_v2025_profile_avatar_trigger_btn" id="readify_profile_trigger_primary">
-                  {% if profile.profile_image %}
                   
-                  <img src="https://ui-avatars.com/api/?name=Jane+Reader&background=1e40af&color=fff" alt="User Avatar" class="readify_nav_system_v2025_avatar_image_element">
+                  {% if request.user.profile.profile_pic %}
+                  
+                  <img src="{{ request.user.profile.profile_pic.url }}" alt="User Avatar" class="readify_nav_system_v2025_avatar_image_element">
                   
                   
                   {% else %}
@@ -322,7 +324,11 @@
 
                 <div class="readify_nav_system_v2025_dropdown_panel_floater" id="readify_dropdown_target_primary">
                     <div class="readify_nav_system_v2025_dropdown_header_info">
-                        <span class="readify_nav_system_v2025_user_name_display">{{request.user.username}}</span>
+                      {% if request.user.profile.full_name %}
+                      <span class="readify_nav_system_v2025_user_name_display">{{request.user.profile.full_name}}</span>
+                      {% else %}
+                      <span class="readify_nav_system_v2025_user_name_display">{{request.user.username}}</span>
+                        {% endif %}
                         <span class="readify_nav_system_v2025_user_role_display">Gold Member</span>
                     </div>
                     
@@ -340,7 +346,7 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                         Account Settings
                     </button>
-                    <a href="{% url "" %}"><button class="readify_nav_system_v2025_dropdown_action_item">
+                    <a href="{% url "home" %}"><button class="readify_nav_system_v2025_dropdown_action_item">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" 
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
